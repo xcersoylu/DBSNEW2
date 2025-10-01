@@ -47,6 +47,7 @@
                        invoice_type = COND #( WHEN ycl_dbs_common=>get_local_time( )-date = ms_invoice_data-invoiceduedate
                                               THEN 'Advance' ELSE 'Term' )
                        payment_type = 'Collection' ).
+    rv_request = /ui2/cl_json=>serialize( EXPORTING data = ls_json pretty_name = 'L' ).
     mv_url = ms_service_info-cpi_url2.
     mv_methodname = 'invoice'.
   ENDMETHOD.
