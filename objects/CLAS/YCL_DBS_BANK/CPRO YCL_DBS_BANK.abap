@@ -9,6 +9,7 @@
     DATA mv_page_size TYPE ydbs_e_additional_field1.
     DATA mv_page_index TYPE ydbs_e_additional_field1.
     DATA mv_url TYPE ydbs_e_cpi_url.
+    DATA mv_http_method TYPE string.
     CONSTANTS mc_id TYPE symsgid VALUE 'YDBS_MC'.
     CONSTANTS mc_error TYPE symsgty VALUE 'E'.
     CONSTANTS mc_success TYPE symsgty VALUE 'S'.
