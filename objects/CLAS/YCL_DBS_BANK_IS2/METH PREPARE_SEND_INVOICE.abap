@@ -31,11 +31,11 @@
     DATA lv_invoice_date TYPE string.
     CONCATENATE ms_invoice_data-invoiceduedate(4) '-'
                 ms_invoice_data-invoiceduedate+4(2) '-'
-                ms_invoice_data-invoiceduedate+6(2) '-'
+                ms_invoice_data-invoiceduedate+6(2)
                 'T00:00:00' INTO lv_due_date.
     CONCATENATE ms_invoice_data-documentdate(4) '-'
                 ms_invoice_data-documentdate+4(2) '-'
-                ms_invoice_data-documentdate+6(2) '-'
+                ms_invoice_data-documentdate+6(2)
                 'T00:00:00' INTO lv_invoice_date.
     ls_json = VALUE #( corporate_code = ms_service_info-additional_field1
                        subscriber_code = ms_subscribe-subscriber_number
