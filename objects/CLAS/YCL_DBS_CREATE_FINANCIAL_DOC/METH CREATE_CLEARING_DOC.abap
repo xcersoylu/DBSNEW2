@@ -21,14 +21,24 @@
                         accounting_document = ms_invoice_data-accountingdocument
                         accounting_document_item = ms_invoice_data-accountingdocumentitem
                        ) TO lt_aparitems.
-        APPEND VALUE #( company_code = ms_invoice_data-companycode
-                        account_type = 'D'
-                        aparaccount  = ms_invoice_data-customer
-                        fiscal_year  = mv_temporary_fi_doc_year
-                        accounting_document = mv_temporary_fi_doc
-                        accounting_document_item = '002' "müşteri kalemi 2. kalem olduğu için
-                        other_deduction_amount_in_dsp = ls_partial
-                       ) TO lt_aparitems.
+        IF ls_partial IS INITIAL.
+          APPEND VALUE #( company_code = ms_invoice_data-companycode
+                          account_type = 'D'
+                          aparaccount  = ms_invoice_data-customer
+                          fiscal_year  = mv_temporary_fi_doc_year
+                          accounting_document = mv_temporary_fi_doc
+                          accounting_document_item = '002' "müşteri kalemi 2. kalem olduğu için
+                         ) TO lt_aparitems.
+        ELSE.
+          APPEND VALUE #( company_code = ms_invoice_data-companycode
+                          account_type = 'D'
+                          aparaccount  = ms_invoice_data-customer
+                          fiscal_year  = mv_temporary_fi_doc_year
+                          accounting_document = mv_temporary_fi_doc
+                          accounting_document_item = '002' "müşteri kalemi 2. kalem olduğu için
+                          other_deduction_amount_in_dsp = ls_partial
+                         ) TO lt_aparitems.
+        ENDIF.
         APPEND VALUE #( message_header = VALUE #( id = VALUE #( content = 'DBS_CLEARING' )
                                                                             creation_date_time = ls_local_time_info-timestamp )
                         journal_entry = VALUE #( company_code              = ms_invoice_data-companycode
